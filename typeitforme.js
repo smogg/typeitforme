@@ -6,6 +6,15 @@
 * Released under MIT license
 * https://github.com/smogg/typeitforme/blog/master/LICENSE
 */
+window.requestAnimationFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
 String.prototype.typeItForMe = function(whereID, speed) {
 	var _this = this;
 	this.alreadyTyped = 0;
